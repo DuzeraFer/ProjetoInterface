@@ -7,6 +7,6 @@ using UnityEngine;
 
 public class AudioManager
 {
-    public static float soundVolume = 1;
-    public static float musicVolume = 1;
+    public static float soundVolume = 0.25f;
+    public static float musicVolume = 0.25f;
 }
