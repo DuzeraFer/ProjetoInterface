@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class AudioController : MonoBehaviour
 {
-    [SerializeField] List<AudioSource> soundSources;
     [SerializeField] AudioSource musicSource;
 
     [SerializeField] List<AudioClip> musics;
 
     [SerializeField] Slider soundVolumeSlider;
     [SerializeField] Slider musicVolumeSlider;
+    [SerializeField] Slider gameSoundVolumeSlider;
+    [SerializeField] Slider gameMusicVolumeSlider;
 
     private void Start()
     {
@@ -23,11 +24,7 @@ public class AudioController : MonoBehaviour
     public void ChangeSoundVolume(float volume)
     {
         AudioManager.soundVolume = volume;
-
-        foreach (var audioSource in soundSources)
-        {
-            audioSource.volume = volume;
-        }
+        AudioListener.volume = AudioManager.soundVolume;
 
         RefreshSliders(AudioManager.soundVolume, AudioManager.musicVolume);
     }
@@ -56,5 +53,7 @@ public class AudioController : MonoBehaviour
     {
         soundVolumeSlider.value = soundVolume;
         musicVolumeSlider.value = musicVolume;
+        gameSoundVolumeSlider.value = soundVolume;
+        gameMusicVolumeSlider.value = musicVolume;
     }
 }
